@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: munim
+      MONGO_INITDB_ROOT_PASSWORD: munim_password
+
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=munim_password
+      - POSTGRES_USER=munim
+      - POSTGRES_DB=munim
+
+
+
